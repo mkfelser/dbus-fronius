@@ -1,5 +1,5 @@
 # Application version and revision
-VERSION = 1.7.16
+VERSION = 1.7.16-mf
 
 # suppress the mangling of va_arg has changed for gcc 4.4
 QMAKE_CXXFLAGS += -Wno-psabi
@@ -76,9 +76,11 @@ SOURCES += \
     src/solar_api_detector.cpp \
     src/sunspec_detector.cpp \
     src/fronius_udp_detector.cpp \
+    src/huawei_detector.cpp \
     src/modbus_tcp_client/modbus_reply.cpp \
     src/modbus_tcp_client/modbus_client.cpp \
     src/sunspec_tools.cpp \
+    src/huawei_tools.cpp \
     src/gateway_interface.cpp \
     src/sunspec_updater.cpp \
     src/solar_api_updater.cpp \
@@ -107,9 +109,11 @@ HEADERS += \
     src/solar_api_detector.h \
     src/sunspec_detector.h \
     src/fronius_udp_detector.h \
+    src/huawei_detector.h \
     src/modbus_tcp_client/modbus_reply.h \
     src/modbus_tcp_client/modbus_client.h \
     src/sunspec_tools.h \
+    src/huawei_tools.h \
     src/gateway_interface.h \
     src/sunspec_updater.h \
     src/solar_api_updater.h \
