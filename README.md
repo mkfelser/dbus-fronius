@@ -1,3 +1,31 @@
+This project is a fork of Victron's driver for Fronius and SunSpec PV inverters, 
+extended to support Huawei SUN2000 PV inverters. The modifications have been 
+tested with a personal setup only and include the following changes:
+
+- Added a product ID for Huawei inverters. Note that this ID is not aligned with 
+  Victron's IDs; it is simply the next available ID after the existing PV inverters.
+- Introduced a `HuaweiSUN2000Detector` that identifies the PV inverter by searching 
+  for the string `SUN2000-` at Modbus register 30000.
+- Created a `HuaweiSUN2000Updater`, derived from `SunspecUpdater`, which reads status 
+  information from the corresponding Modbus registers.
+- TODO: Implement Huawei limiter functionality.
+
+These changes are available on the `huawei_sun2000` branch.
+
+### Installation 
+
+To replace the original driver, place the new driver at `/opt/victronenergy/dbus-fronius/dbus-fronius`.
+
+### Configuration
+
+Set the Modbus device ID in Victron's D-Bus settings system with the following command:
+
+```sh
+dbus -y com.victronenergy.settings /Settings/Fronius/ModbusSlaveAddress SetValue 1
+```
+
+Below is the original documentation:
+
 dbus-fronius
 ============
 This application communicates with Fronius, ABB, SolarEdge, SMA, and possibly also
