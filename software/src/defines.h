@@ -30,7 +30,8 @@ enum ProtocolType {
 	ProtocolFroniusSolarApi,
 	ProtocolSunSpecFloat,
 	ProtocolSunSpecIntSf,
-	ProtocolSunSpec2018 // 700 series models
+	ProtocolSunSpec2018, // 700 series models
+	ProtocolHuaweiSUN2000
 };
 
 struct DeviceInfo
