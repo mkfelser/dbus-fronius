@@ -6,6 +6,7 @@
 #include "gateway_interface.h"
 #include "inverter_mediator.h"
 #include "sunspec_updater.h"
+#include "huawei_updater.h"
 #include "solaredge_limiter.h"
 #include "sma_limiter.h"
 #include "inverter_settings.h"
@@ -221,6 +222,12 @@ void InverterMediator::startAcquisition()
 		if (mDeviceInfo.retrievalMode == ProtocolSunSpec2018) {
 			qInfo() << "Using protocol IEEE1547-2018";
 			Sunspec2018Updater *updater = new Sunspec2018Updater(
+				limiter, mInverter, mInverterSettings, mInverter);
+			connect(updater, SIGNAL(connectionLost()), this, SLOT(onConnectionLost()));
+			connect(updater, SIGNAL(inverterModelChanged()), this, SLOT(onInverterModelChanged()));
+		} else if (mDeviceInfo.retrievalMode == ProtocolHuaweiSUN2000) {
+			qInfo() << "Using Huawei SUN2000 protocol";
+			HuaweiSUN2000Updater *updater = new HuaweiSUN2000Updater(
 				limiter, mInverter, mInverterSettings, mInverter);
 			connect(updater, SIGNAL(connectionLost()), this, SLOT(onConnectionLost()));
 			connect(updater, SIGNAL(inverterModelChanged()), this, SLOT(onInverterModelChanged()));
