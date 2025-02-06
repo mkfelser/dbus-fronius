@@ -87,6 +87,7 @@ SOURCES += \
     src/huawei_tools.cpp \
     src/gateway_interface.cpp \
     src/sunspec_updater.cpp \
+    src/huawei_updater.cpp \
     src/solar_api_updater.cpp \
     src/data_processor.cpp \
     src/solaredge_limiter.cpp \
@@ -122,6 +123,7 @@ HEADERS += \
     src/huawei_tools.h \
     src/gateway_interface.h \
     src/sunspec_updater.h \
+    src/huawei_updater.h \
     src/solar_api_updater.h \
     src/data_processor.h \
     src/solaredge_limiter.h \
