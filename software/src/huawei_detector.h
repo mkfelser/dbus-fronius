@@ -11,8 +11,8 @@ class ModbusTcpClient;
 
 #define HUAWEI_REG_MODEL 30000
 #define HUAWEI_REG_MODEL_SIZE (15+10+10+15)
-#define HUAWEI_REG_POWER 30073
-#define HUAWEI_REG_POWER_SIZE 2
+#define HUAWEI_REG_RATED_POWER 30073
+#define HUAWEI_REG_RATED_POWER_SIZE 2
 	
 
 class HuaweiSUN2000Detector : public AbstractDetector
