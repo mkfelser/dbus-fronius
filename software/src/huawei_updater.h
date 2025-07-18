@@ -10,9 +10,9 @@ public:
 	explicit HuaweiSUN2000Updater(BaseLimiter *limiter, Inverter *inverter, InverterSettings *settings, QObject *parent = 0);
 
 private:
-	virtual void readPowerAndVoltage();
+	void readPowerAndVoltage() override;
 
-	virtual bool parsePowerAndVoltage(QVector<quint16> values);
+	bool parsePowerAndVoltage(QVector<quint16> values) override;
 	
 	void setInverterState(int sunSpecState);
 };
