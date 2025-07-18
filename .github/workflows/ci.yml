@@ -1,0 +1,21 @@
+name: CI Build (Devcontainer)
+
+on:
+  push:
+    branches: [ "huawei_sun2000" ]
+  pull_request:
+    branches: [ "huawei_sun2000" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Run build.sh in devcontainer
+        uses: devcontainers/ci@v0.3
+        with:
+          runCmd: ./build.sh
