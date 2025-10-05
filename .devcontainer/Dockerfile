@@ -3,10 +3,10 @@ FROM mcr.microsoft.com/devcontainers/base:debian
 RUN apt-get update ; \
     apt-get install file qtcreator -y
 
-ADD https://updates.victronenergy.com/feeds/venus/release/sdk/venus-scarthgap-x86_64-arm-cortexa8hf-neon-toolchain-v3.65.sh /tmp/
+ADD https://updates.victronenergy.com/feeds/venus/release/sdk/venus-scarthgap-x86_64-arm-cortexa8hf-neon-toolchain-v3.66.sh /tmp/
 
-RUN chmod a+x /tmp/venus-scarthgap-x86_64-arm-cortexa8hf-neon-toolchain-v3.65.sh ; \
-    sudo /tmp/venus-scarthgap-x86_64-arm-cortexa8hf-neon-toolchain-v3.65.sh ; \
+RUN chmod a+x /tmp/venus-scarthgap-x86_64-arm-cortexa8hf-neon-toolchain-v3.66.sh ; \
+    sudo /tmp/venus-scarthgap-x86_64-arm-cortexa8hf-neon-toolchain-v3.66.sh ; \
     sudo ln -s /opt/venus/scarthgap-arm-cortexa8hf-neon /opt/venus/current
     
 # Switch to the vscode user
