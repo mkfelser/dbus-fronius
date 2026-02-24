@@ -581,7 +581,9 @@ void SunspecLimiter::onConnected(ModbusTcpClient *client)
 	BaseLimiter::onConnected(client);
 
 	// If model 123 exists, this will be non-zero.
-	emit detected(mInverter->deviceInfo().powerLimitScale > 0);
+	emit detected(
+		mInverter->deviceInfo().powerLimitScale > 0 &&
+		mInverter->deviceInfo().maxPower > 0);
 }
 
 void SunspecLimiter::initialize()
@@ -620,7 +622,9 @@ void Sunspec2018Limiter::onConnected(ModbusTcpClient *client)
 	BaseLimiter::onConnected(client);
 
 	// If model 704 exists, this will be non-zero.
-	emit detected(mInverter->deviceInfo().powerLimitScale > 0);
+	emit detected(
+		mInverter->deviceInfo().powerLimitScale > 0 &&
+		mInverter->deviceInfo().maxPower > 0);
 }
 
 void Sunspec2018Limiter::initialize()
