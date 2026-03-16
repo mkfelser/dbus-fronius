@@ -98,7 +98,7 @@ void HuaweiSUN2000Detector::onFinished()
 			setDone(di);
 			return;
 		}
-		di->di.maxPower = 	static_cast<double>(getIntValue(values, 0, 2));
+		di->di.maxPower = getIntValue(values, 0);
 		//di->currentRegister = HUAWEI_REG_RATED_POWER;
 		checkDone(di);
 		return;
