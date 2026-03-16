@@ -88,18 +88,18 @@ void HuaweiSUN2000Detector::onFinished()
 		di->di.firmwareVersion = getString(values, 35, 15);
 //		di->di.powerLimitScale = 100.0 / getScale(values, 0);
 
-		di->currentRegister = HUAWEI_REG_POWER;
-		startNextRequest(di, HUAWEI_REG_POWER_SIZE);
+		di->currentRegister = HUAWEI_REG_RATED_POWER;
+		startNextRequest(di, HUAWEI_REG_RATED_POWER_SIZE);
 		return;
 	}
-	case HUAWEI_REG_POWER:
+	case HUAWEI_REG_RATED_POWER:
 	{
-		if (values.size() != HUAWEI_REG_POWER_SIZE) {
+		if (values.size() != HUAWEI_REG_RATED_POWER_SIZE) {
 			setDone(di);
 			return;
 		}
 		di->di.maxPower = 	static_cast<double>(getIntValue(values, 0, 2));
-		di->currentRegister = HUAWEI_REG_POWER;
+		//di->currentRegister = HUAWEI_REG_RATED_POWER;
 		checkDone(di);
 		return;
 	}
@@ -121,7 +121,7 @@ void HuaweiSUN2000Detector::checkDone(Reply *di)
 			di->di.phaseCount > 0 &&
 			di->di.networkId > 0)
 		di->setResult();
-	qDebug() << "found!! " << di->di.productName << " SN: "<< di->di.uniqueId << " FW: " << di->di.firmwareVersion << " pwr: " << di->di.maxPower;
+	qDebug() << "HuaweiSUN2000Detector found: " << di->di.productName << " SN: "<< di->di.uniqueId << " FW: " << di->di.firmwareVersion << " pwr: " << di->di.maxPower;
 			setDone(di);
 }
 
