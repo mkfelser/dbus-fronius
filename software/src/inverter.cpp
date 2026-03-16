@@ -273,7 +273,8 @@ void Inverter::updateConnectionItem()
 {
 	produceValue(mConnection, QString("%1 - %2 (%3)").
 		arg(mDeviceInfo.hostName).arg(mDeviceInfo.networkId).
-		arg(mDeviceInfo.retrievalMode == ProtocolFroniusSolarApi ? "solarapi" : "sunspec"));
+		arg(mDeviceInfo.retrievalMode == ProtocolFroniusSolarApi ? "solarapi" :
+		   (mDeviceInfo.retrievalMode == ProtocolHuaweiSUN2000   ? "sun2000"  : "sunspec")));
 }
 
 void Inverter::setTrackerVoltage(int t, double v)
