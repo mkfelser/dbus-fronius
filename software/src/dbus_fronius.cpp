@@ -43,11 +43,11 @@ void DBusFronius::onSettingsInitialized()
 	mGateway->clearDetectors();
 	mGateway->addDetector(new SolarApiDetector(mSettings, this));
 	mGateway->addDetector(new SunspecDetector(126, this));
-	mGateway->addDetector(new HuaweiSUN2000Detector(0, this));
 
 	// Add detectors on additional ports and ids
 	for (QPair<int,quint8> p : mSettings->modbusAlternates()) {
 		mGateway->addDetector(new SunspecDetector(p.first, p.second, this));
+		mGateway->addDetector(new HuaweiSUN2000Detector(p.first, p.second, this));
 	}
 
 	// Track future changes

@@ -41,7 +41,7 @@ DetectorReply *HuaweiSUN2000Detector::start(const QString &hostName, int timeout
 	if (SunspecUpdater::hasConnectionTo(hostName, port, unitId)) {
 		return 0;
 	}
-
+				
 	ModbusTcpClient *client = new ModbusTcpClient(this);
 	connect(client, SIGNAL(connected()), this, SLOT(onConnected()));
 	connect(client, SIGNAL(disconnected()), this, SLOT(onDisconnected()));
@@ -131,8 +131,8 @@ void HuaweiSUN2000Detector::checkDone(Reply *di)
 			di->di.phaseCount > 0 &&
 			di->di.networkId > 0)
 		di->setResult();
-	qDebug() << "HuaweiSUN2000Detector found: " << di->di.productName << " SN: "<< di->di.uniqueId << " FW: " << di->di.firmwareVersion << " pwr: " << di->di.maxPower;
-			setDone(di);
+	qDebug() << "HuaweiSUN2000Detector found: " << di->di.productName << " SN: "<< di->di.uniqueId << " FW: " << di->di.firmwareVersion << " pwr: " << di->di.maxPower << " id: " << di->di.networkId;
+	setDone(di);
 }
 
 void HuaweiSUN2000Detector::setDone(Reply *di)
