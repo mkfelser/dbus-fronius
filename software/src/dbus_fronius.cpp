@@ -5,6 +5,7 @@
 #include "settings.h"
 #include "solar_api_detector.h"
 #include "sunspec_detector.h"
+#include "huawei_detector.h"
 #include "ve_qitem_init_monitor.h"
 
 DBusFronius::DBusFronius(QObject *parent) :
@@ -42,6 +43,7 @@ void DBusFronius::onSettingsInitialized()
 	mGateway->clearDetectors();
 	mGateway->addDetector(new SolarApiDetector(mSettings, this));
 	mGateway->addDetector(new SunspecDetector(126, this));
+	mGateway->addDetector(new HuaweiSUN2000Detector(0, this));
 
 	// Add detectors on additional ports and ids
 	for (QPair<int,quint8> p : mSettings->modbusAlternates()) {
